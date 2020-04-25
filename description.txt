@@ -1,0 +1,9 @@
+Are you tired of fixing your inventory after you die in mediumcore? Me too... use this mod.
+Are you so obssessed with the game that you lose track of real world time? Me too... so what? Now you can see it.
+
+
+
+TLDR:
+
+When you pick up your items after death, this mod puts everything back the way it was in your inventory right before you died.
+Also shows time 
