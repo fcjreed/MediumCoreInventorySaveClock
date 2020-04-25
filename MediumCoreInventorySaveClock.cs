@@ -24,9 +24,9 @@ namespace MediumCoreInventorySaveClock
                     string text = DateTime.Now.ToString(cfg.clockFormat);
                     int offset = cfg.offset;
                     Vector2 overridePosition = cfg.position;
-                    Vector2 position = overridePosition != null ? overridePosition : new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapY);
+                    Vector2 position = overridePosition.Y != -1 ? overridePosition * new Vector2(Main.screenWidth, Main.screenHeight) : new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapY);
                     if (Main.mapStyle == 1)  {
-                        position = new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapHeight + Main.miniMapY + offset);
+                        position = overridePosition.Y != -1 ? overridePosition * new Vector2(Main.screenWidth, Main.screenHeight) : new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapHeight + Main.miniMapY + offset);
                     }
                     Utils.DrawBorderString(Main.spriteBatch, text, position, Color.WhiteSmoke);
 					return true;

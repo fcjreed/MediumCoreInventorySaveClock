@@ -25,6 +25,7 @@ namespace MediumCoreInventorySaveClock
 
             [Label("Real World Timer Location")]
             [Tooltip("The position of the Real World Clock. Default right side of screen.")]
+            [DefaultValue(typeof(Vector2), "-1, -1")]
             public Vector2 position;
 
             public override ConfigScope Mode => ConfigScope.ClientSide;
