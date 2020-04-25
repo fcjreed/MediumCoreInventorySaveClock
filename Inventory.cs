@@ -1,10 +1,9 @@
 using Terraria.ModLoader;
 using Terraria;
-using System;
 using Terraria.DataStructures;
 using System.Collections.Generic;
 
-namespace InventorySort
+namespace MediumCoreInventorySaveClock
 {
 	public class Inventory : ModPlayer
 	{

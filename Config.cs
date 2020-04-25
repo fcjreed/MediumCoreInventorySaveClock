@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 
-namespace InventorySort
+namespace MediumCoreInventorySaveClock
 {
     public class Config : ModConfig
         {

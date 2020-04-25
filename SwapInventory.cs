@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace InventorySort
+namespace MediumCoreInventorySaveClock
 {
     class SwapInventory : GlobalItem
     {
         public override bool OnPickup(Item item, Player player)
         {
-            if (player.difficulty == 1 && CanPickup(item, player)) {
+            if (player.difficulty == 1 && CanPickup(item, player) && Inventory.inventoryState.Values.Any(v => -1 != v)) {
                 bool foundSwap = false;
                 if (item.bodySlot > 0 || item.headSlot > 0 || item.legSlot > 0 || item.accessory || item.vanity)
                 {
