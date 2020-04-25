@@ -10,34 +10,36 @@ namespace MediumCoreInventorySaveClock
     {
         public override bool OnPickup(Item item, Player player)
         {
-            if (player.difficulty == 1 && CanPickup(item, player) && Inventory.inventoryState.Values.Any(v => -1 != v)) {
+            Inventory inven = player.GetModPlayer<Inventory>();
+            DataHolder data = inven.getPlayerData(player);
+            if (data != null && player.difficulty == 1 && this.CanPickup(item, player) && data.inventoryState.Values.Any(v => -1 != v)) {
                 bool foundSwap = false;
                 if (item.bodySlot > 0 || item.headSlot > 0 || item.legSlot > 0 || item.accessory || item.vanity)
                 {
-                    foundSwap = handleSwap(item, player, Inventory.equipState, ref player.armor);
+                    foundSwap = handleSwap(item, data.equipState, ref player.armor);
                 }
                 else if (item.dye > 0)
                 {
-                    foundSwap = handleSwap(item, player, Inventory.equipDye, ref player.dye);
+                    foundSwap = handleSwap(item, data.equipDye, ref player.dye);
                     if (!foundSwap)
                     {
-                        foundSwap = handleSwap(item, player, Inventory.miscDye, ref player.miscDyes);
+                        foundSwap = handleSwap(item, data.miscDye, ref player.miscDyes);
                     }
                 }
                 else
                 {
-                    foundSwap = handleSwap(item, player, Inventory.miscState, ref player.miscEquips);
+                    foundSwap = handleSwap(item, data.miscState, ref player.miscEquips);
                     if (!foundSwap)
                     {
-                        foundSwap = handleSwap(item, player, Inventory.inventoryState, ref player.inventory);
+                        foundSwap = handleSwap(item, data.inventoryState, ref player.inventory);
                     }
                 }
                 return foundSwap ? false : base.OnPickup(item, player);
             }
             return base.OnPickup(item, player);
-        }   
+        }
 
-        public bool handleSwap(Item item, Player player, Dictionary<int, int> state, ref Item[] swap)
+        private bool handleSwap(Item item, Dictionary<int, int> state, ref Item[] swap)
         {
             if (state != null && state.ContainsValue(item.netID))
             {

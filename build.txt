@@ -1,3 +1,4 @@
 displayName = Mediumcore Inventory Save & Local Real Time
 author = Vedavox, The Green Egg
 version = 1.2
+side = Client
