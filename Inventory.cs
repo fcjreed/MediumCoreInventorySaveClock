@@ -31,7 +31,7 @@ namespace MediumCoreInventorySaveClock
 				buildData(ref holder.miscState, ref this.player.miscEquips);
 				buildData(ref holder.equipDye, ref this.player.dye);
 				buildData(ref holder.miscDye, ref this.player.miscDyes);
-				bruh.Add(this.player.name, holder);
+				this.playerData.Add(this.player.name, holder);
 			}
 
 			return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
