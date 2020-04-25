@@ -1,7 +1,9 @@
 Are you tired of fixing your inventory after you die in mediumcore? Me too... use this mod.
 Are you so obssessed with the game that you lose track of real world time? Me too... so what? Now you can see it.
 
+If you have a full inventory when you go to pick up your body, this mod will not do anything as your inventory is full.
 
+This mod does not work properly with players who have the same name. 
 
 TLDR:
 

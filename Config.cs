@@ -7,15 +7,11 @@ namespace MediumCoreInventorySaveClock
 {
     public class Config : ModConfig
         {
-            [Header("MiniMap Y offset (pixels)")]
+            [Header("Clock Positioning")]
             [Label("Enable Real World Clock")]
             [Tooltip("Enables or disables showing of the local clock.")]
             [DefaultValue(true)]
             public bool clockEnabled;
-            
-            [Label("Bork")]
-            [DefaultValue(false)]
-            public bool borkEnabled;
 
             [Label("The display format of the Clock.")]
             [Tooltip("Be careful what format you put here as the text will overlay if it's too large. Supports DateTime format.")]

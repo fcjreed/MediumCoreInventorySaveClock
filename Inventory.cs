@@ -8,7 +8,7 @@ namespace MediumCoreInventorySaveClock
 {
 	public class Inventory : ModPlayer
 	{
-		private Dictionary<string, DataHolder> playerData = new Dictionary<string, DataHolder>();
+		public DataHolder playerData;
 		public Inventory()
 		{
 		}
@@ -23,25 +23,17 @@ namespace MediumCoreInventorySaveClock
 
 		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
-			DataHolder holder = new DataHolder();
-			if (this.player.difficulty == 1)
+			if (Main.LocalPlayer.name.Equals(this.player.name) && this.player.difficulty == 1)
 			{
-				buildData(ref holder.inventoryState, ref this.player.inventory);
-				buildData(ref holder.equipState, ref this.player.armor);
-				buildData(ref holder.miscState, ref this.player.miscEquips);
-				buildData(ref holder.equipDye, ref this.player.dye);
-				buildData(ref holder.miscDye, ref this.player.miscDyes);
-				this.playerData.Add(this.player.name, holder);
+				this.playerData = new DataHolder();
+				buildData(ref this.playerData.inventoryState, ref this.player.inventory);
+				buildData(ref this.playerData.equipState, ref this.player.armor);
+				buildData(ref this.playerData.miscState, ref this.player.miscEquips);
+				buildData(ref this.playerData.equipDye, ref this.player.dye);
+				buildData(ref this.playerData.miscDye, ref this.player.miscDyes);
 			}
 
 			return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
-		}
-
-		public DataHolder getPlayerData(Player player) {
-			if (this.playerData.ContainsKey(player.name)){
-				return this.playerData[player.name];
-			}
-			return null;
 		}
 
 	}
