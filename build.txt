@@ -1,4 +1,7 @@
 displayName = Mediumcore Inventory Save & Local Real Time
 author = Vedavox, The Green Egg
 version = 1.4
+homepage = https://github.com/fcjreed/MediumCoreInventorySaveClock
 side = Client
+
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.suo, *.sln, .git, *.md, .git\*
