@@ -9,10 +9,15 @@ namespace MediumCoreInventorySaveClock
 {
     public class MediumCoreInventorySaveClock : Mod
     {
+        internal static ModHotKey ResetDeathCache;
         public MediumCoreInventorySaveClock()
         {
-
+            Properties = new ModProperties()
+			{
+				Autoload = true,
+			};
         }
+        
          public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
             Config cfg = ModContent.GetInstance<Config>();
@@ -36,8 +41,14 @@ namespace MediumCoreInventorySaveClock
 
         public override void Load()
         {
+            Logger.Info("CFG VALUE FOR KEY : " + Config.Instance.deathCacheKey);
+            ResetDeathCache = RegisterHotKey("Reset Death Cache", "Home");
             SwapInventory swap = new SwapInventory();
             AddGlobalItem("swapper", swap);
+        }
+
+        public override void Unload() {
+            ResetDeathCache = null;
         }
     }
 }
