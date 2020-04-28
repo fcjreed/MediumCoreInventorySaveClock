@@ -7,7 +7,10 @@ namespace MediumCoreInventorySaveClock
 {
     public class Config : ModConfig
         {
-            [Header("Clock Positioning")]
+
+            public static Config Instance;
+
+            [Header("Death Cache && Clock Positioning")]
             [Label("Enable Real World Clock")]
             [Tooltip("Enables or disables showing of the local clock.")]
             [DefaultValue(true)]
