@@ -41,7 +41,6 @@ namespace MediumCoreInventorySaveClock
 
         public override void Load()
         {
-            Logger.Info("CFG VALUE FOR KEY : " + Config.Instance.deathCacheKey);
             ResetDeathCache = RegisterHotKey("Reset Death Cache", "Home");
             SwapInventory swap = new SwapInventory();
             AddGlobalItem("swapper", swap);

@@ -1,6 +1,6 @@
 displayName = Mediumcore Inventory Save & Local Real Time
 author = Vedavox, The Green Egg
-version = 1.4
+version = 1.5
 homepage = https://github.com/fcjreed/MediumCoreInventorySaveClock
 side = Client
 
