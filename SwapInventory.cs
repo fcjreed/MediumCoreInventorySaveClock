@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MediumCoreInventorySaveClock
 {
-    class SwapInventory : GlobalItem
+    class SwapInventory : Terraria.ModLoader.
     {
         public override bool OnPickup(Item item, Player player)
         {
@@ -21,19 +21,11 @@ namespace MediumCoreInventorySaveClock
                 }
                 else if (item.dye > 0)
                 {
-                    foundSwap = handleSwap(item, data.equipDye, ref player.dye, ref player.inventory);
-                    if (!foundSwap)
-                    {
-                        foundSwap = handleSwap(item, data.miscDye, ref player.miscDyes, ref player.inventory);
-                    }
+                    foundSwap = handleSwap(item, data.equipDye, ref player.dye, ref player.inventory) || handleSwap(item, data.miscDye, ref player.miscDyes, ref player.inventory);
                 }
                 else
                 {
-                    foundSwap = handleSwap(item, data.miscState, ref player.miscEquips, ref player.inventory);
-                    if (!foundSwap)
-                    {
-                        foundSwap = handleSwap(item, data.inventoryState, ref player.inventory, ref player.inventory);
-                    }
+                    foundSwap = handleSwap(item, data.miscState, ref player.miscEquips, ref player.inventory) || handleSwap(item, data.inventoryState, ref player.inventory, ref player.inventory);
                 }
                 return foundSwap ? false : base.OnPickup(item, player);
             }
@@ -54,7 +46,7 @@ namespace MediumCoreInventorySaveClock
                     List<Item> workingInv = currentInv.Take(50).ToList();
                     int y;
                     if (workingInv.Any(i => i.netID == 0)) {
-                            y = workingInv.FindLastIndex(empty);
+                        y = workingInv.FindLastIndex(empty);
                     }
                     else
                     {

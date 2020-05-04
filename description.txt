@@ -10,6 +10,11 @@ The above hotkey was added as a safety measure in case of subsequent deaths prio
 
 Note: If your hotkey is not displaying a message when you press it, make sure to check your key bindings.
 
+Thanks:
+
+The code behind displaying the time was inspired by GoodPro712's FlightTimer Mod.
+You can check out that mod here: https://github.com/GoodPro712/FlightTimer
+
 Caveats:
 
 1. If you have a full inventory when you go to pick up your body, this mod will not do anything as your inventory is full.

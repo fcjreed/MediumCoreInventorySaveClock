@@ -21,7 +21,7 @@ namespace MediumCoreInventorySaveClock
          public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
 		{
             Config cfg = ModContent.GetInstance<Config>();
-			int mouseText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
+            int mouseText = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
 			if (cfg.clockEnabled && mouseText != -1)
 			{
 				layers.Insert(mouseText, new LegacyGameInterfaceLayer("RealTime: Player Name", delegate
@@ -30,7 +30,7 @@ namespace MediumCoreInventorySaveClock
                     int offset = cfg.offset;
                     Vector2 overridePosition = cfg.position;
                     Vector2 position = overridePosition.Y != -1 ? overridePosition * new Vector2(Main.screenWidth, Main.screenHeight) : new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapY);
-                    if (Main.mapStyle == 1)  {
+                    if (Main.mapStyle == 1 && overridePosition.Y != -1)  {
                         position = overridePosition.Y != -1 ? overridePosition * new Vector2(Main.screenWidth, Main.screenHeight) : new Vector2(Main.miniMapWidth * 0.7f + Main.miniMapX, Main.miniMapHeight + Main.miniMapY + offset);
                     }
                     Utils.DrawBorderString(Main.spriteBatch, text, position, Color.WhiteSmoke);

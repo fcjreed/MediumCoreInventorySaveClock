@@ -16,6 +16,11 @@ namespace MediumCoreInventorySaveClock
             [DefaultValue(true)]
             public bool clockEnabled;
 
+            [Label("Death Cache Snapshot")]
+            [Tooltip("Sets whether or not to use the death cache as a snapshot.")]
+            [DefaultValue(false)]
+            public bool useDeathCacheForSnapshot;
+
             [Label("The display format of the Clock.")]
             [Tooltip("Be careful what format you put here as the text will overlay if it's too large. Supports DateTime format.")]
             [DefaultValue("h:mm tt")]
