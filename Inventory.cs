@@ -24,14 +24,8 @@ namespace MediumCoreInventorySaveClock
 		public override void ProcessTriggers(TriggersSet triggersSet)
 		{
 			if (MediumCoreInventorySaveClock.ResetDeathCache.JustPressed) {
-				Config cfg = ModContent.GetInstance<Config>();
-				if (cfg.useDeathCacheForSnapshot) {
-					setupSnapshot();
-					Main.NewText("Death Cache Snapshot Saved.");
-				} else {
-					this.resetCache = !this.resetCache;
-					Main.NewText("Death cache has been set to " + this.resetCache + ".", Color.White);
-				}
+				this.resetCache = !this.resetCache;
+				Main.NewText("Death cache has been set to " + this.resetCache + ".", Color.White);
 			}
 		}
 

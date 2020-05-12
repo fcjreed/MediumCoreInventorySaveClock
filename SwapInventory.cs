@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace MediumCoreInventorySaveClock
 {
-    class SwapInventory : Terraria.ModLoader.
+    class SwapInventory : GlobalItem
     {
         public override bool OnPickup(Item item, Player player)
         {
@@ -21,7 +21,16 @@ namespace MediumCoreInventorySaveClock
                 }
                 else if (item.dye > 0)
                 {
-                    foundSwap = handleSwap(item, data.equipDye, ref player.dye, ref player.inventory) || handleSwap(item, data.miscDye, ref player.miscDyes, ref player.inventory);
+                    // Handle when same dyes stack
+                    if (item.stack > 1) {
+                        Item cloneSingleStack = item.Clone();
+                        cloneSingleStack.stack = 1;
+                        for (int i = 0; i < item.stack; i++) {
+                            foundSwap = handleSwap(cloneSingleStack, data.equipDye, ref player.dye, ref player.inventory) || handleSwap(cloneSingleStack, data.miscDye, ref player.miscDyes, ref player.inventory);
+                        }
+                    } else {
+                        foundSwap = handleSwap(item, data.equipDye, ref player.dye, ref player.inventory) || handleSwap(item, data.miscDye, ref player.miscDyes, ref player.inventory);
+                    }
                 }
                 else
                 {
