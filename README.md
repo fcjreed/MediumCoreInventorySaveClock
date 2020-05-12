@@ -4,8 +4,15 @@ It also displays a real world clock. You can modify the clock settings in the Mo
 
 ## Hotkey:
 
-``` "Home" - Used to enable/disable death cache. When death cache is true and you die, it saves your inventory. By default this value is true, however, when you die this value becomes false. 
-Once you recover your items, press the hotkey to set it back to true so when you die, it works again. This will also display the current status.
+``` 
+"Home" - Used to enable/disable death cache. When death cache is true and you die, it saves your inventory. 
+
+By default this value is true, however, when you die this value becomes false. 
+
+Once you recover your items, press the hotkey to set it back to true so when you die, it works again. 
+
+Pressing the hotkey will also display the current status in the bottom left corner of the screen.
+
 ```
 
 The above hotkey was added as a safety measure in case of subsequent deaths prior to picking up items.
