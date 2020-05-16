@@ -12,6 +12,7 @@ By default this value is true, however, when you die this value becomes false.
 Once you recover your items, press the hotkey to set it back to true so when you die, it works again. 
 
 Pressing the hotkey will also display the current status in the bottom left corner of the screen.
+
 ```
 
 The above hotkey was added as a safety measure in case of subsequent deaths prior to picking up items.

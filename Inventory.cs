@@ -12,11 +12,8 @@ namespace MediumCoreInventorySaveClock
 	{
 		public DataHolder playerData;
 		public bool resetCache = true;
-		public Inventory()
-		{
-		}
 
-		private void buildData(ref Dictionary<int, int> build, ref Item[] items)
+		private void buildData(ref Dictionary<int, int> build, Item[] items)
 		{
 			for (int x = 0; x < items.Length; x++)
 			{
@@ -33,22 +30,26 @@ namespace MediumCoreInventorySaveClock
 		}
 
 		public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
-		{
-			if (Main.LocalPlayer.name.Equals(this.player.name) && this.player.difficulty == 1)
-			{
-				if (this.resetCache) {
-					this.playerData = new DataHolder();
-					buildData(ref this.playerData.inventoryState, ref this.player.inventory);
-					buildData(ref this.playerData.equipState, ref this.player.armor);
-					buildData(ref this.playerData.miscState, ref this.player.miscEquips);
-					buildData(ref this.playerData.equipDye, ref this.player.dye);
-					buildData(ref this.playerData.miscDye, ref this.player.miscDyes);
-					this.resetCache = false;
-				}
+        {
+			if (this.resetCache) {
+            	setupSnapshot();
 			}
+            return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
+        }
 
-			return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
-		}
+        private void setupSnapshot()
+        {
+            if (Main.LocalPlayer.name.Equals(this.player.name))
+            {
+				this.playerData = new DataHolder();
+				buildData(ref this.playerData.inventoryState, this.player.inventory);
+				buildData(ref this.playerData.equipState, this.player.armor);
+				buildData(ref this.playerData.miscState, this.player.miscEquips);
+				buildData(ref this.playerData.equipDye, this.player.dye);
+				buildData(ref this.playerData.miscDye, this.player.miscDyes);
+				this.resetCache = false;
+            }
+        }
 
 	}
 }

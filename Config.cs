@@ -22,7 +22,7 @@ namespace MediumCoreInventorySaveClock
             public string clockFormat;
 
             [Label("MiniMap Y offset")]
-            [Tooltip("Changes the offset in pixels of the veritcal axis.")]
+            [Tooltip("Changes the offset in pixels of the veritcal axis between the minimap and the clock text (Based on default position).")]
             [DefaultValue(14)]
             public int offset;
 
